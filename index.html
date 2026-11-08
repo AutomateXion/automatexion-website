@@ -930,8 +930,20 @@
   }
 
   @media (max-width: 768px) {
-    .xc-hero { grid-template-columns: 1fr; }
+    .xc-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .xc-hero > div { min-width: 0; }
     .xc-visual { display: none; }
+    .xc-hero h2 { font-size: clamp(1.8rem, 8.5vw, 2.6rem); overflow-wrap: anywhere; }
+    .xc-logo-display { gap: 14px; }
+    .xc-icon { width: 56px; height: 56px; }
+    .xc-icon img { width: 56px !important; height: 56px !important; }
+    .xc-wordmark { font-size: clamp(1.4rem, 7.2vw, 2.2rem); }
+  }
+
+  /* Small phones: product card names must shrink to fit their card */
+  @media (max-width: 600px) {
+    .product-logo-row { min-width: 0; gap: 10px; }
+    .product-wordmark { font-size: clamp(1.05rem, 5.2vw, 1.5rem); min-width: 0; overflow-wrap: anywhere; }
   }
 
 </style>
