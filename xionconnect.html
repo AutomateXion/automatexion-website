@@ -217,10 +217,22 @@ section { padding-block: clamp(56px, 8vw, 104px); }
 .bar em { font-style: normal; text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 
 /* steps */
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: s; }
-.step { padding: 26px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); display: grid; gap: 8px; counter-increment: s; }
-.step::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font: 600 .95rem var(--font-display); }
-.step p { color: var(--ink-2); font-size: .96rem; }
+.flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px; counter-reset: s; position: relative; align-items: stretch; }
+.node { position: relative; padding: 26px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); display: grid; gap: 10px; align-content: start; counter-increment: s; box-shadow: 0 10px 30px -18px rgba(10,26,51,.25); }
+.node::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font: 600 .95rem var(--font-display); }
+.node p { color: var(--ink-2); font-size: .96rem; }
+.node:not(:last-child)::after { content: ""; position: absolute; top: 43px; left: calc(100% + 6px); width: 52px; height: 0; border-top: 2px dashed var(--green-bright); animation: dash 1.2s linear infinite; }
+.node:not(:last-child) .arrow { position: absolute; top: 36px; left: calc(100% + 42px); width: 0; height: 0; border-left: 10px solid var(--green-bright); border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.branch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 4px; }
+.branch span { padding: 8px 10px; border-radius: 10px; background: var(--soft); border: 1px solid var(--mint); font-size: .8rem; font-weight: 600; color: var(--green); text-align: center; line-height: 1.25; }
+.flow-end { margin-top: 28px; display: flex; justify-content: center; }
+.flow-end span { padding: 10px 18px; border-radius: 999px; background: var(--mint); color: var(--green); font-weight: 600; font-size: .9rem; }
+@keyframes dash { to { background-position: 0 0; border-top-color: var(--green-bright); } }
+@media (max-width: 900px) {
+  .flow { grid-template-columns: minmax(0, 1fr); gap: 52px; }
+  .node:not(:last-child)::after { top: calc(100% + 6px); left: 50%; width: 0; height: 34px; border-top: 0; border-left: 2px dashed var(--green-bright); }
+  .node:not(:last-child) .arrow { top: calc(100% + 34px); left: calc(50% - 6px); border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 10px solid var(--green-bright); border-bottom: 0; }
+}
 @media (max-width: 800px) { .steps { grid-template-columns: minmax(0, 1fr); } }
 
 /* pricing + faq */
@@ -512,11 +524,12 @@ footer { background: var(--night); color: #b8c6dc; padding-block: 8px 40px; bord
         <div class="eyebrow">How it works</div>
         <h2>From first call to first reply</h2>
       </div>
-      <div class="steps">
-        <div class="step"><h3>Connect your channels</h3><p>Link your WhatsApp Business number and your Instagram, Messenger, Telegram, email and SMS accounts.</p></div>
-        <div class="step"><h3>Set up your automation</h3><p>Add your answers, assignment rules and working hours. Choose when AI replies and when a person does.</p></div>
-        <div class="step"><h3>Reply as one team</h3><p>Your agents work from one inbox, with notes, tags and customer history, and you watch the results in reports.</p></div>
+      <div class="flow">
+        <div class="node"><h3>Connect your channels</h3><p>Link your WhatsApp Business number and your Instagram, Messenger, Telegram, email and SMS accounts.</p><span class="arrow"></span></div>
+        <div class="node"><h3>Set up your automation</h3><p>Add your answers, assignment rules and working hours. Choose when AI replies and when a person does.</p><div class="branch" aria-label="Each message goes to AI or to a person"><span>AI replies</span><span>A person replies</span></div><span class="arrow"></span></div>
+        <div class="node"><h3>Reply as one team</h3><p>Your agents work from one inbox, with notes, tags and customer history, and you watch the results in reports.</p></div>
       </div>
+      <div class="flow-end"><span>Customer message in &rarr; reply out, tracked in reports</span></div>
     </div>
   </section>
 
