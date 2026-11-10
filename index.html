@@ -778,10 +778,12 @@
   }
   .product-card.erp::before   { background: radial-gradient(ellipse at top left, rgba(26,43,255,.08), transparent 70%); }
   .product-card.connect::before { background: radial-gradient(ellipse at top left, rgba(16,185,129,.08), transparent 70%); }
+  .product-card.webstore::before { background: radial-gradient(ellipse at top left, rgba(251,146,60,.08), transparent 70%); }
   .product-card.transform::before { background: radial-gradient(ellipse at top left, rgba(124,58,237,.08), transparent 70%); }
   .product-card:hover { transform: translateY(-3px); }
   .product-card.erp:hover     { border-color: rgba(26,43,255,.4); }
   .product-card.connect:hover { border-color: rgba(16,185,129,.4); }
+  .product-card.webstore:hover { border-color: rgba(251,146,60,.4); }
   .product-card.transform:hover { border-color: rgba(124,58,237,.4); }
   .product-card:hover::before { opacity: 1; }
 
@@ -801,6 +803,7 @@
   .product-wordmark .xion-part { color: var(--white); }
   .product-wordmark .erp-part   { color: var(--muted); }
   .product-wordmark .connect-part { color: #10b981; }
+  .product-wordmark .webstore-part { color: #fb923c; }
   .product-wordmark .transform-part { color: #8b5cf6; }
 
   .product-badge {
@@ -811,6 +814,7 @@
   }
   .badge-live  { background: rgba(0,200,255,.1); border: 1px solid rgba(0,200,255,.25); color: var(--cyan); }
   .badge-new   { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); color: #10b981; }
+  .badge-store { background: rgba(251,146,60,.1); border: 1px solid rgba(251,146,60,.3); color: #fb923c; }
   .badge-soon  { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.3); color: #a78bfa; }
 
   .product-desc {
@@ -835,6 +839,7 @@
   }
   .product-link.erp-link       { color: var(--cyan); }
   .product-link.connect-link   { color: #10b981; }
+  .product-link.webstore-link { color: #fb923c; }
   .product-link.transform-link { color: #a78bfa; }
   .product-link:hover { gap: .7rem; }
 
@@ -1428,6 +1433,27 @@
       <span class="product-link transform-link">Explore platform ›</span>
     </a>
 
+    <!-- Xion Webstore -->
+    <a class="product-card webstore" href="/xionwebstore.html">
+      <div class="product-logo-row">
+        <div class="product-icon">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAARuklEQVR42u2de4zc1XXHv+c+5rFev7bYKUGEFgIILzEpNBSD7XVQ2yhqqdXS2SRN80fb1FZiYIGWqrQ044migkRDcYBENiSVWjU0M9DEpRUSbcDGryiRW2FYI0KgUEQIXmft9WPn8bv3nv7x+82yXtt4wTs785s9X8myPBqtV/P7zDnnnnsegEgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikShtIvkIuktchEJ/gTB84ORn27+UMVxhKiHIJyWaUei4OGCm/X4GcXHAMLffAIkF7AJrR4MVP/Ha5msvgqNlPqiLmHkpGBkw10irt1jhZaPsMH3h6Tcn3l8uaBQqgQgsAIqmD1+5oJvg8TdWX+w9/gDgG5j5IyarM1AUP13GO397hmv4YwT8N0g9rp35Dt369NtTf54AKDo9eAChWCQqlUL173/tl0zG/jWBPquzOg8X4KOAENjj1BZNGVKKMgrQhFAPIwA2Hzkw9tXFpecOtwNCATBN8CUxGxHYPbByHTTdozN6sa86hMAOBAUQ0bs8VwYYzAEENkoZyhv4unuFXbjZ3rLrydmGUABMU7xXAqNQUG71W5tN3vwJ1zycDw5Emt7Hs2QGA+xtRhsQENX5rzJDO+5OIAyJ4xYABT4obARj/VXGfyRf0fPs2uhYw4FJE539M2TmQERseq12Rxv32qFdf8HFAUOl7U4AFPgmw/e47rE3RMeiiAh2ht07E8GZXmujI407M7fuumc23LEAKPCdCKGCNxltarXoE/mh3U+1GkIlj1ngm7BGBGJmBc9slHqYN129AMPLuJUJawFQ4JviEklFkfemx37IIXMHlUoBlYISFyzw2VlM97DSBOYwVg10yYKhnSPMoFbclogFFPhO6YpDCN7k7aIc4TMAgI0DWlywwDebVy4Ez0yMQvzC9iAACnyzaQYVNwKBcCVvXnUulRCKxZnnRQAU+E53OCDHIZis7nHjWA4AG/sLJAAKfLOpAE1gHS4GgFMWuQqAAl+rTSEH/CIkDyjwtekwAkWUEwAFvvbVzBMaAqDA1zYLyMCIACjwtScXGBhE6hUAcVedAHi6HomyZn7GMLNKatyImTU/84xhZhL43rvh04q0q/rIReGF+BRcmXEATfrL1IsK2AgiOqFkiIgYgJ9UdKmnvmfWyugJjA+myPIlv7mymkI9DOfGdr6W3AUHAfDESl5FRAEogcd+fA0UrYVzVyHwOSCuw5ifQOn/wsjRrUR0+J33z2ID0cYiYfO/66iRf9ymBj4AQIBVihvhe1RCYAwYYOYrpE164StrIvL8+g8vRN+i+0BqLXpyQOSAEAAiwOhrQPSHWBLe4J/v/zIRPZK4aE4sZGvhKxcUDZZ8tGnlt+18e0N0NB3wMcBKkfJVV/cO/4QW3gWbFFs+zz977hrM79mKXG4pDo0F1GoJeUwgYjDHn2cmcz76Fj7Mh178KBHdxFzWzT6Ilv2S5YKiwYpv3H/d35j59lNpgS/5gL3OWRMdc/+cv33nq62silZphA8A8+jwBcjnnwCppTg0FoFIgciAoEGkAGgQaRAZNBoBo2MRFi3cwKMvbiYa9EBFtepwwoX4gfFDqz+ms3qjH48cKB1f9sBgZZRyVX/UOdrIDGrF4SPVp2AiYnh+CL35czBejUBkz1TZAbDF6KEIixeuazmEyyrMRSjn/CalSQXPRCkp/lUEp3NGheBv7/nzHW+gUlCtHGak0pZqIaLAB1+4Gvncb+HwEX9G+E6UxejhlkLI5YKmEoL7hVWfNHmzIqo6T0Q6JY3vkem1NjoafSs7tPuR2eiKS1cMWFjSBOX30ZMDavX30S7DMYR9i9bx6Isgumz9jMaEw8uSwJNviZ9pOkwfMyLba210LPo3+8Fz13G5oBE3p0tf8NS0Cx8c/j7mz7seR497EN6ndaEIfYssDo1tob4YQqBwVhByEYpKCPzgigsc65cIyAYGd7r7bcLnx6MndKZ6I9btdc0RIC13+SmL/ZrfyD6EAOBsXCe3wB0PKABoOH29yZmsD+xTBd/zCXwbW9OAlHoXzMxERAziOoiAs3aZrXHHingFaHYsyIzCtzmBbxYnqKbrFLxtm05M4aswmmdmeM5MWsKJZO2l8Bxf5gt8XQTgmolk1VPxzWSYoQc8MxBSCSGeIkBLERigzgSwU+BLYR5wjWdmgsp/F4ePvI1cjsAcOgFCbsZ6lWWWgXxsm0ng67JDCANQ1HfRGNjfid55CqRmME81A5ZweEkAwUMsX3fehBCRZy5rOmf5P2Dk4NfRt9gCiNoNISXxKJW2OwKOxJ8sC3zdWZBaCMxlTUuXb8Chw1tiCKntEHK5oBPs3oBSAHcGgZ0KX7rvglEIXC5r6rtsPQ6NbUHfovZDmPTNMuM5KDA6IA3TyfABKa4HJCJm5tgS0mXrefRFoG/ROowejgC2MwrhdPOESc+E0tgGF+5q9xe80+FLfUV0x0GY3J0aW90T1XJvGqvPcy4EagOIaYCvK5qSJtwxt98dE8BcHDC0fu84ET1KWQWAg8DX5V1xnQQhsD0QAOf1Q77qq0qR4lk8DqcJvq5qy+wUCKmEEMoFnb9t+2vseZPusQrMXuCbIyN6YxgqimjQ8+iLm7F44QzHhGcu5Wqu00Lvd/Muu2CvyehLo3prC1PTCF9XTkboBEs4kZS+Y99xw+ozIXBVaaWYWxMPphW+rh5S3hGWMClpjzZdu1ZlzL/Cs/I+zJgljPe+wdn51kbHoydsyuDr6tkwHWEJByueiwPGDu3eGmrRjVA0brNGB2Z3tgcTTuJKO99aN+7+Zd/z1RuxJV3wzYk1DR1hCZO9a437V3xMW/MtldOX+/HmhktS080TTmy6BGBzRnsfQvBcyty888tx3Jku+ObMnpBOgPCZ4oD5eGm743uXzws9C+5iopt0Rvei4RG5EAAExHNkTqzij/cUMRikFWmVjb23j/yzwdGdmaEdu5vDjzq9AntOL6rpDEtYVFQqBQCofvWaD2dyZh0HDGqrLoBVQADgQ+ycm+10igAdH2t83VcBbGNgs71px9Z2bjoXANOcoknGdgAA3/sb89y86goVaBUzX8HAh5ixMHHLVRAdAPFLBrQHip+lL+58derm9FTH6sBc2zrefggnZgZiQJ1qJy8/M2AwMqLU4P4Gn2rWYH+B0mz15vyuuE6BcGJ+YKWgMHyA0L+Up4LVBBXNa76UHTIEwBRAeNr+kklJ7W6VmasAdmQ94RyBTgBMAYQCoEAoEAqAAqEAmPbDxjQDeoFQAJy5nRzvkrbgckE3Ux4oVMLk6yuBUNIwZzWZFMMVngocAQjlZRksWRLo46dI+hYHzFRQOzlFIwB2nMUrKpRK3HSv/PWVFyLQagdeAaZLwbwUQJ6BQIQxAv6PiJ4LineY4/k9dMd/Hp8AeLASJn6OQCgATmsec3JzED24ai0B6wGs0VmdBwHwDAR+52KfAGgV37JGAT4Kr5NCuVFzW/J/9oOfTC0YEAgFwNOvv0oKLxubVl2rDN+trV4NAKHu4QP7ZgkTiOikGuI47lPWKIWMhm/4Y8T8oBo/8hW6Y9/xZumUQCgAnvqQUQITwI0HVn5JaSpqrVRUc765kmG6Y3EZCGAOSpHRPQah5l/wkfvjzK17ftQsIhUIBcCT4Nu77ipzxfKefzQ95tPRsYgRnyD12fRWMLPPZI0JgcdDPfqsvW3P9wRCAfD0K0/nxbvXQDAzNQicmb3WSkNTCA33e3Zo99bJcaZAiLnZlHTKfbvJ7rWZnEJPRNr7ENgzKWse5U2rfyVuLCqqzpvAAElEd+OyZyJSwQdvjck78o/yvcuvwjFUubkFUZLVc8cCtmvTOBHpqO6c6bWXusyCu6hUCigXVGfOopEYsCvX3Mc7c8EA1aNILeu5bftrIdmEJDcmXW4B2w1f8s2kEDjovM4b7TfwpE1IYgm72AJ2AnyT84TGKOUi/6bN1S6h9XvHm7FgWsr7xQKmFL7k26mc88Fm9Xkuyq8AgMmxoFjCLjoFdxp8kxRgFIV6WAPg+81B5B1TT1hO9+nYCHxn9MOEACLCFQAmBpF3DIR96U7RGIHvjH6YEAIIOL858aozyvsPRejrW8cH9jmi5RvimBBeYsBugq8ZCcbjWhbExasnlvm3bzQcYgiXnPNFPrjvj4gGPTNrAbCr4DvBFWv0j6iOmk/IQePY8QDSd/PoKwsBhLQdSpTAN722JgKqKOyP3kvjeMshJFKo1RiLFnwAofq78f+3TQuA3WX5GIoA8AEicNz01EGTWpViMDMU/SYAYJu44O6BLzZ3DE0A8BJOcRvSARASnCcwXwgAWLPGyym4W+Brlv8zEJj2dGTzOzOBGWDKTtqpLACe9BABxpaUwQewVqRdzdUzxj+NpNe4syAkhlIAMJpcCyoiCgLg5BC+El9fRfW3HrPz0gFf8jCDzhkV1fx2unnP65M75joIQoY1AHhv/M9tCkjPDMHWx4DJONrop29tsb32d9ICH96p1CACfQ0A0L+fOm6FBIEwXgOAxwAAlRGWapgpfbv1Tdd+PtObfdgdjyIgHfAxs7d5o13V7TGju1Y298C1fkjmoel/RswRFi+0GB37D1py+W+nzf221AJyEQqFShj/u1XnK6Xv8zUXAqdjFg0DrDRx8ByM0UNUQsD+As3OMp3FsSU801ov5gg9eYtj1YPQtCGtVTGtc8H9BSICG8MbTV7PDy4ERSnpwmM43WONr/uNtOHZH3G5oKnSmqHgJ0F4eOwh9C20yGQUmF2yadODOYDhk9cCFi+04HAA1eoN1Nf/evyjKEhBamL9qIRQvW/lhTaD/QBsCCBKQRsoMyI731p3NPqOHdr56akzY1o7szqGiH++//PImi8hnz8fzIDzADOgFGANMF4DOGzF6OHb6YKrX40PNINeyrEmNKCA7UEbfE7nTTY6HjkCmVTA15ss/stVP8fFosJgKczGzOYkf8dJHPcI/+//PIYlai2C/3U492EwZaHoIIzZi8BbaeElP5iUdkklfK2zgMnsFte3cq/Jqo9GDR8IpNIAnx+PntCZ6o1Yv9chrr/nNhyA9JmgYmaFeEBOkIroqe6XEKr3rfxlA/SHKMSZjLTA11x5+lMQUXvyaUTkmZmwbZvGmjUMICT5QwVsU6iMcJqtXmtdcH+BgAqMVZebLNmo2tpN4d267DlxyW7KayFNSeb2nIKTngnmcBHiOVUs8IlmPQ1DwJJOPvMKfN2eB2RkOtX2CXxzAMDAXOtECyjwzRUXrPCzTrOAAt9cADDpmyWvXobnjpm+IPDNEQA3DlcYAEwP9rm6HzekFLd5+6PAh7l5FxxtWrnD5PR1Uc2FduUCBb45GQPGjTtMqEATtSsXKPDN4btgIvCRTSuX5BX/mEgtDJ5Bs1iOJfDNYQtIBOZyQS8Y2jmCQA/qvCGAvcAnmrWS/Lgipkjoe7LXqczzRqvzI+e51VUxAp9YwAkriP79REM/POJC+FNoiostuXXxoMAnAJ4I4WDFc7mg80O7n4qq7k4zzxoiuFZAKPAJgKeHsDhgMrfuuscdbdxreq0lQuAzNd1MHzxmsLPzrfXj0VaBT2LAU7fvJ/3BjU2r7rRZ+lswEDW8A0i/n9NxvPeSvdHKUE7DVd03zbPnrkelElAU+ATAd+kTjr523SfJqAd01lzEVQcXgktWq77rpktO9gqCEW+4zBv4hj8Ez39pbt65JRkB0pYyelEKpmM1Y0J7y64nj7595FdDzX+FiUZsjzU2Z7QhIgYHBruT/jB7RSCb0crOswaKqq7uHonqjSvNzTu3cLGoQAKfWMD3uOmc77/+A964T4HDjQxcaTK6Fzqxg81N5wwgMFzdN4joeYCe0Brfpi88+/LUnycSAKefJ6zEceHEa9+4/jwXon4KuJh9OBdEORAaRHRAq/AKDO+n9btfmQwyhiss8Z7orEDk4oBpxm/TK3YYMO91UqlILOD05sn0F+iUy2D6l7JYO5FIJBKJRCKRSCQSiUQikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIpGo/fp/gyrPmL48S8QAAAAASUVORK5CYII=" alt="" width="52" height="52">
+        </div>
+        <div class="product-wordmark">
+          <span class="xion-part">Xion</span><span class="webstore-part">Webstore</span>
+        </div>
+      </div>
+      <span class="product-badge badge-store">New · Online Store module</span>
+      <p class="product-desc">An online shop run from the XionERP a company already uses. Items, prices and stock come straight from XionERP, and web orders land as sales orders and quotations.</p>
+      <div class="product-features">
+        <span>Prices &amp; stock from XionERP</span>
+        <span>Cash on delivery</span>
+        <span>Request a quote</span>
+        <span>WooCommerce import</span>
+      </div>
+      <span class="product-link webstore-link">Learn more ›</span>
+    </a>
+
   </div>
 </section>
 
@@ -1819,6 +1845,7 @@
       <div style="display:flex;flex-direction:column;gap:.4rem;">
         <a href="#products" style="font-size:.78rem;color:#6670a0;text-decoration:none;">Our Products</a>
         <a href="/xionconnect.html" style="font-size:.78rem;color:#6670a0;text-decoration:none;">XionConnect Platform</a>
+        <a href="/xionwebstore.html" style="font-size:.78rem;color:#6670a0;text-decoration:none;">Xion Webstore</a>
         <a href="#about" style="font-size:.78rem;color:#6670a0;text-decoration:none;">About AutomateXion</a>
         <a href="careers.html" style="font-size:.78rem;color:#6670a0;text-decoration:none;">Careers – Open positions</a>
         <a href="#methodology" style="font-size:.78rem;color:#6670a0;text-decoration:none;">Our Methodology</a>
